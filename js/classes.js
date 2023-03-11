@@ -116,14 +116,6 @@ class Fighter extends Sprite {
         this.attackBox.position.x = this.position.x + this.attackBox.offset.x
         this.attackBox.position.y = this.position.y + this.attackBox.offset.y
 
-
-        // c.fillStyle = 'black'
-        // c.fillRect(this.attackBox.position.x, this.attackBox.position.y, this.attackBox.width, this.attackBox.height)
-        // c.fillStyle = 'green'
-        // c.fillRect(this.position.x, this.position.y, this.width, this.height)
-        // c.fillStyle = 'purple'
-        // c.fillRect(this.position.x + this.offset.x, this.position.y + this.offset.y, this.width, this.height)
-
         this.position.x += this.velocity.x
         this.position.y += this.velocity.y
 
@@ -149,7 +141,7 @@ class Fighter extends Sprite {
         this.isAttacking = true;
     }
     takeHit() {
-        this.health -= this.isReversed ? 20 : Math.floor(Math.random() * 20 + 1)
+        this.health -= this.isReversed ? 10 : Math.floor(Math.random() * 10 + 1)
         if (this.health <= 0) {
             this.switchSprites('death')
         } else {
