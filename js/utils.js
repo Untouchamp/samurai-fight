@@ -62,7 +62,7 @@ function determineWinner({player1, player2, timerId}) {
     }
 }
 
-let timer = 3
+let timer = 60
 let timerId
 function decreaseTimer() {
     // End Game Based On Timer
