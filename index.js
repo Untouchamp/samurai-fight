@@ -88,7 +88,7 @@ const player = new Fighter({
             // reversedImageSrc: "./img/wizard/Attack1.png",
             // framesMax: 8
             imageSrc: `./img/fantasy-warrior/Attack1.png`,
-            reversedImageSrc: "./img/fantasy-warrior/Attack1Reversed.png",
+            reversedImageSrc: "./img/fantasy-warrior/Attack1Reversed1.png",
             framesMax: 7,
             attackFrame: 5
         },
@@ -170,7 +170,7 @@ const enemy = new Fighter({
             framesMax: 2
         },
         attack1: {
-            imageSrc: "./img/red-mask-samurai/Attack1Reversed.png",
+            imageSrc: "./img/red-mask-samurai/Attack1Reversed1.png",
             reversedImageSrc: "./img/red-mask-samurai/Attack1.png",
             framesMax: 4,
             attackFrame: 2

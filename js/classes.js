@@ -126,6 +126,25 @@ class Fighter extends Sprite {
         else this.velocity.y += gravity;
     }
 
+    getAttackBoxAccordingToDirection() {
+        if (this.lastKey === 'ArrowRight'|| this.lastKey === 'a') {
+            let correctionForPlayer1 = this.isReversed ? 0 : 65
+            return {
+                position: {
+                    x: this.position.x + (this.width + this.attackBox.offset.x) * -1 + this.offset.x + 30 + correctionForPlayer1,
+                    y: this.position.y - (this.attackBox.offset.y) * -1,
+                },
+                offset: this.attackBox.offset,
+                width: this.attackBox.width,
+                height: this.attackBox.height,
+            }
+        // } else if (this.isReversed && keys.ArrowRight.pressed) {
+        //     return this.attackBox
+        } else {
+            return this.attackBox
+        }
+    }
+
     attack() {
         let attackKind = 'attack1';
         // if (!this.isReversed) {  // if attack2 & attack3 enabled
@@ -157,7 +176,8 @@ class Fighter extends Sprite {
         }
         // overriding all other animations with the attack animation
         if ((
-                this.image === this.sprites.attack1.image &&
+                (this.image === this.sprites.attack1.image ||
+                    this.image === this.sprites.attack1.reversedImage) &&
                 this.framesCurrent < this.sprites.attack1.framesMax - 1)
             //  if attack 2 & attack 3 enabled
             // || (
@@ -181,8 +201,14 @@ class Fighter extends Sprite {
 
         switch (sprite) {
             case 'idle':
-                if (this.image !== this.sprites.idle.image) {
-                    this.image = this.sprites.idle.image;
+                if ((this.image !== this.sprites.idle.image) ||
+                    (this.image !== this.sprites.idle.reversedImage)) {
+                    if (this.lastKey === 'ArrowRight' || this.lastKey === 'a') {
+                        this.image = this.sprites.idle.reversedImage
+                    }
+                    else {
+                        this.image = this.sprites.idle.image;
+                    }
                     this.framesMax =this.sprites.idle.framesMax;
                     this.framesCurrent = 0;
                 }
@@ -231,10 +257,23 @@ class Fighter extends Sprite {
                     this.framesCurrent = 0;
                 }
                 break
+            // case 'attack1':
+            //     if (this.image !== this.sprites.attack1.image) {
+            //         this.image = this.sprites.attack1.image;
+            //         this.framesMax =this.sprites.attack1.framesMax;
+            //         this.framesCurrent = 0;
+            //     }
+            //     break
             case 'attack1':
-                if (this.image !== this.sprites.attack1.image) {
-                    this.image = this.sprites.attack1.image;
+                if ((this.image !== this.sprites.attack1.image) ||
+                    (this.image !== this.sprites.attack1.reversedImage)) {
                     this.framesMax =this.sprites.attack1.framesMax;
+                    if (this.lastKey === 'ArrowRight' || this.lastKey === 'a') {
+                        this.image = this.sprites.attack1.reversedImage
+                    }
+                    else {
+                        this.image = this.sprites.attack1.image;
+                    }
                     this.framesCurrent = 0;
                 }
                 break

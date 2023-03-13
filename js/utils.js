@@ -1,15 +1,27 @@
 function rectangularCollision({rectangle1, rectangle2}) {
+    const rect1AttackBox = rectangle1.getAttackBoxAccordingToDirection()
+    // console.log(rect1AttackBox.position.x)
     // https://disk.yandex.com/i/H5EZsFbdPiMXQg
     return (
-        rectangle1.attackBox.position.x + rectangle1.attackBox.width >=
+        rect1AttackBox.position.x + rect1AttackBox.width >=
         rectangle2.position.x + rectangle2.offset.x &&
-        rectangle1.attackBox.position.x <=
+        rect1AttackBox.position.x <=
         rectangle2.position.x + rectangle2.offset.x + rectangle2.width &&
-        rectangle1.attackBox.position.y + rectangle1.attackBox.height >=
+        rect1AttackBox.position.y + rect1AttackBox.height >=
         rectangle2.position.y + rectangle2.offset.y &&
-        rectangle1.attackBox.position.y <=
+        rect1AttackBox.position.y <=
         rectangle2.position.y + rectangle2.offset.y+ rectangle2.height
     )
+    // return (
+    //     rectangle1.attackBox.position.x + rectangle1.attackBox.width >=
+    //     rectangle2.position.x + rectangle2.offset.x &&
+    //     rectangle1.attackBox.position.x <=
+    //     rectangle2.position.x + rectangle2.offset.x + rectangle2.width &&
+    //     rectangle1.attackBox.position.y + rectangle1.attackBox.height >=
+    //     rectangle2.position.y + rectangle2.offset.y &&
+    //     rectangle1.attackBox.position.y <=
+    //     rectangle2.position.y + rectangle2.offset.y+ rectangle2.height
+    // )
 }
 
 function horizontalMovementHandler (isLeftPressed, isLeftWasLastKey, isRightPressed, isRightWasLastKey, player) {
