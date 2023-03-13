@@ -143,7 +143,7 @@ const enemy = new Fighter({
         y: 15
     },
     isReversed: true,
-    imageSrc: "./img/enemy-idle.png",
+    imageSrc: "./img/red-mask-samurai/IdleReversed.png",
     // scale: 1,
     scale: 2.3,
     framesMax: 4,
