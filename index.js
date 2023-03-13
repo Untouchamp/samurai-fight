@@ -2,7 +2,7 @@ const canvas = document.querySelector("canvas");
 const c = canvas.getContext('2d');
 const gravity = 0.7;
 const platformHeight = 90;
-const jumpLimit = 500;
+const yPositionLimit = 336;
 let attackCountPlayer1 = 1;
 let attackCountPlayer2 = 1;
 
@@ -295,7 +295,8 @@ window.addEventListener('keydown', (e) => {
         switch (e.key) {
             //PLAYER KEYS
             case 'w':
-                player.velocity.y = -20;
+                if (player.position.y === 336)
+                    player.velocity.y = -20;
                 break
             case 'a':
                 keys.a.pressed = true;
@@ -319,7 +320,8 @@ window.addEventListener('keydown', (e) => {
         switch (e.key) {
             // ENEMY KEYS
             case 'ArrowUp':
-                enemy.velocity.y = -20;
+                if (enemy.position.y === yPositionLimit)
+                    enemy.velocity.y = -20;
                 break
             case 'ArrowLeft':
                 keys.ArrowLeft.pressed = true;
