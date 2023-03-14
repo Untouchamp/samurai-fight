@@ -11,6 +11,10 @@ canvas.height = 576;
 
 c.fillRect(0, 0, canvas.width, canvas.height)
 
+function getRandomBackground() {
+    return `./img/background${Math.floor(Math.random()*5+1)}.png`
+}
+
 const background = new Sprite({
     position: {
         x: 0,
@@ -292,21 +296,21 @@ animate()
 
 window.addEventListener('keydown', (e) => {
     if (!player.dead) {
-        switch (e.key) {
+        switch (e.code) {
             //PLAYER KEYS
-            case 'w':
+            case 'KeyW':
                 if (player.position.y === 336)
                     player.velocity.y = -20;
                 break
-            case 'a':
+            case 'KeyA':
                 keys.a.pressed = true;
                 player.lastKey = 'a'
                 break
-            case 'd':
+            case 'KeyD':
                 keys.d.pressed = true;
                 player.lastKey = 'd'
                 break
-            case ' ':
+            case 'Space':
                 player.attack();
                 if (attackCountPlayer1 < 3) {
                     attackCountPlayer1++
@@ -346,16 +350,16 @@ window.addEventListener('keydown', (e) => {
 })
 
 window.addEventListener('keyup', (e) => {
-    switch (e.key) {
+    switch (e.code) {
         //PLAYER KEYS
-        case 'w':
+        case 'KeyW':
             keys.w.pressed = false;
             break
-        case 'a':
+        case 'KeyA':
             keys.a.pressed = false;
             if (keys.d.pressed) player.lastKey = 'd'
             break
-        case 'd':
+        case 'KeyD':
             keys.d.pressed = false;
             if (keys.a.pressed) player.lastKey = 'a'
             break
